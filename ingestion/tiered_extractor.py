@@ -294,11 +294,28 @@ def extract_all_tiered(records: list) -> list:
     tier_counts = {"cache": 0, "rule": 0, "llm_cheap": 0, "llm_frontier": 0}
     COSTS = {"cache": 0.0, "rule": 0.0, "llm_cheap": 0.0002, "llm_frontier": 0.003}
 
+    # Process new/changed records
+    new_ids = {r["id"] for r in to_process}
     for record in to_process:
         extraction, tier = extract_tiered(record)
         tier_counts[tier] = tier_counts.get(tier, 0) + 1
         results.append((record, extraction, tier))
         mark_indexed(record, tier)
+
+    # Load unchanged records from extraction cache so graph is always fully populated
+    for record in records:
+        if record["id"] in new_ids:
+            continue
+        text = f"{record.get('title', '')} {record.get('body', '')}"
+        cached = cache_get(text)
+        if cached:
+            results.append((record, _dict_to_result(cached), "cache"))
+            tier_counts["cache"] += 1
+        else:
+            # Fallback: run rule extractor (free, no LLM)
+            extraction = extract_with_rules(record)
+            results.append((record, extraction, "rule"))
+            tier_counts["rule"] += 1
 
     total = sum(tier_counts.get(t, 0) * c for t, c in COSTS.items())
     naive = len(to_process) * COSTS["llm_frontier"]
