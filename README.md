@@ -113,6 +113,9 @@ All other scripts (normalization, graph building, vector store) are free — no 
 
 ---
 
+<img width="1495" height="1216" alt="image" src="https://github.com/user-attachments/assets/8d766421-6a0a-49f5-a813-288ac1bdf739" />
+
+
 ## Example Questions to Try
 
 - *"Why is the checkout service returning 503 errors?"*
