@@ -1,3 +1,4 @@
+<img width="6665" height="5669" alt="diagram" src="https://github.com/user-attachments/assets/af5f833f-d67d-4c4e-ae60-218271ac68c8" />
 # Aksibu Mini — Engineering Context Engine
 
 > Ask complex operational questions across your entire engineering stack and get grounded, cited answers.
