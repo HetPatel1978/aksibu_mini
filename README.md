@@ -1,4 +1,3 @@
-<img width="6665" height="5669" alt="diagram" src="https://github.com/user-attachments/assets/af5f833f-d67d-4c4e-ae60-218271ac68c8" />
 # Aksibu Mini — Engineering Context Engine
 
 > Ask complex operational questions across your entire engineering stack and get grounded, cited answers.
@@ -119,6 +118,12 @@ streamlit run ui/app.py
 ```
 
 Open [http://localhost:8501](http://localhost:8501). All three tabs are live immediately.
+
+
+
+<img width="6665" height="5669" alt="diagram" src="https://github.com/user-attachments/assets/af5f833f-d67d-4c4e-ae60-218271ac68c8" />
+
+
 
 ---
 
